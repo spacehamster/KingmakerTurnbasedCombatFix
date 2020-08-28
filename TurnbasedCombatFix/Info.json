@@ -2,7 +2,7 @@
   "Id": "TurnbasedCombatFix",
   "DisplayName": "Turnbased Combat Fix",
   "Author": "spacehamster",
-  "Version": "1.0.0",
+  "Version": "0.0.1",
   "ManagerVersion": "0.22.1",
   "Requirements": [],
   "AssemblyName": "TurnbasedCombatFix.dll",
