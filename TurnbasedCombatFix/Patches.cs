@@ -16,6 +16,7 @@ namespace TurnbasedCombatFix
 {
     class Patches
     {
+        //Disable Prepare For Combat Prompt
         [HarmonyPatch(typeof(TurnBasedModeUIController), "ShowCombatStartWindow")]
         static class TurnBasedModeUIController_ShowCombatStartWindow_Patch
         {
@@ -23,13 +24,8 @@ namespace TurnbasedCombatFix
             {
                 if (___m_CombatStartWindowVM != null)
                 {
-                    Main.Log("Skipping show combat window");
                     ___m_CombatStartWindowVM.Dispose();
                     ___m_CombatStartWindowVM = null;
-                }
-                else
-                {
-                    Main.Log("CombatStartWindow is null");
                 }
                 return false;
             }

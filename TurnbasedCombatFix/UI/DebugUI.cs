@@ -5,6 +5,7 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Commands;
 using ModMaker.Utility;
+using Pathfinding;
 using System.Collections.Generic;
 using System.Reflection;
 using TurnBased.Controllers;
@@ -51,6 +52,58 @@ namespace TurnbasedCombatFix.UI
         void Toggle()
         {
             enabled = !enabled;
+        }
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                Popcron.Gizmos.Enabled = !Popcron.Gizmos.Enabled;
+            }
+            if (!Popcron.Gizmos.Enabled) return;
+            for (int j = 0; j < AstarPath.active.graphs.Length; j++)
+            {
+                if (AstarPath.active.graphs[j] != null)
+                {
+                    Color? color = null;
+                    if(j == 0)
+                    {
+                        color = Color.red;
+                    }
+                    if(j == 1)
+                    {
+                        color = Color.cyan;
+                    }
+                    DrawGraph(AstarPath.active.graphs[j], color);
+                }
+            }
+        }
+        static void DrawGraph(NavGraph graph, Color? color = null)
+        {
+            PathHandler data = AstarPath.active.debugPathData;
+            GraphNode node = null;
+            GraphNodeDelegate drawConnection = delegate (GraphNode otherNode)
+            {
+                Popcron.Gizmos.Line((Vector3)node.position, (Vector3)otherNode.position, color);
+            };
+            graph.GetNodes(delegate (GraphNode _node)
+            {
+                node = _node;
+                Gizmos.color = graph.NodeColor(node, AstarPath.active.debugPathData);
+                if (AstarPath.active.showSearchTree && !NavGraph.InSearchTree(node, AstarPath.active.debugPath))
+                {
+                    return true;
+                }
+                PathNode pathNode = (data != null) ? data.GetPathNode(node) : null;
+                if (AstarPath.active.showSearchTree && pathNode != null && pathNode.parent != null)
+                {
+                    Popcron.Gizmos.Line((Vector3)node.position, (Vector3)pathNode.parent.node.position, color);
+                }
+                else
+                {
+                    node.GetConnections(drawConnection);
+                }
+                return true;
+            });
         }
         void OnGUI()
         {
