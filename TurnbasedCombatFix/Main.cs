@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using ModMaker;
 using System;
 using System.Reflection;
 using UnityModManagerNet;
@@ -26,15 +27,18 @@ namespace TurnbasedCombatFix
         public static bool enabled;
         public static UnityModManager.ModEntry modEntry;
         public static Harmony harmony;
+        public static ModManager<Core, Settings> Mod;
+        public static MenuManager Menu;
         static bool Load(UnityModManager.ModEntry modEntry)
         {
-            try { 
+            try {
                 Main.modEntry = modEntry;
+                Mod = new ModManager<Core, Settings>();
+                Menu = new MenuManager();
+                modEntry.OnToggle = OnToggle;
 #if DEBUG
                 modEntry.OnUnload = Unload;
 #endif
-                harmony = new Harmony(modEntry.Info.Id);
-                harmony.PatchAll(Assembly.GetExecutingAssembly());
             }
             catch (Exception ex)
             {
@@ -45,7 +49,22 @@ namespace TurnbasedCombatFix
         }
         static bool Unload(UnityModManager.ModEntry modEntry)
         {
-            harmony.UnpatchAll(modEntry.Info.Id);
+            //harmony.UnpatchAll(modEntry.Info.Id);
+            return true;
+        }
+        static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
+        {
+            if (value)
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                Mod.Enable(modEntry, assembly);
+                Menu.Enable(modEntry, assembly);
+            }
+            else
+            {
+                Menu.Disable(modEntry);
+                Mod.Disable(modEntry, false);
+            }
             return true;
         }
     }

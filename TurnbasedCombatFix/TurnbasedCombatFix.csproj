@@ -54,6 +54,10 @@
       <HintPath>$(KingMakerInstallDir)\Kingmaker_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityModManager">
+      <HintPath>$(KingMakerInstallDir)\Kingmaker_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(KingMakerInstallDir)\Kingmaker_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -91,20 +95,53 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Kingmaker\Kingmaker_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityModManager">
-      <HintPath>$(KingMakerInstallDir)\Kingmaker_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+    <Reference Include="DOTween">
+      <HintPath>$(KingMakerInstallDir)\Kingmaker_Data\Managed\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HotkeyController.cs" />
+    <Compile Include="Controllers\PauseController.cs" />
+    <Compile Include="Controllers\UIController.cs" />
+    <Compile Include="Core.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Menus\HotkeyAndTimeOptions.cs" />
+    <Compile Include="Menus\InterfaceOptions.cs" />
+    <Compile Include="Menus\RestrictionsOptions.cs" />
+    <Compile Include="ModMaker\LocalizationManager.cs" />
+    <Compile Include="ModMaker\MenuManager.cs" />
+    <Compile Include="ModMaker\ModManager.cs" />
+    <Compile Include="ModMaker\Utility\Dictionary\DoubleDictionary.cs" />
+    <Compile Include="ModMaker\Utility\Dictionary\SerializableDictionary.cs" />
+    <Compile Include="ModMaker\Utility\Dictionary\TripleDictionary.cs" />
+    <Compile Include="ModMaker\Utility\Extensions\CodeInstructionExtensions.cs" />
+    <Compile Include="ModMaker\Utility\Extensions\RichTextExtensions.cs" />
+    <Compile Include="ModMaker\Utility\Extensions\UnityExtensions.cs" />
+    <Compile Include="ModMaker\Utility\GUIHelper.cs" />
+    <Compile Include="ModMaker\Utility\GUISubScope.cs" />
+    <Compile Include="ModMaker\Utility\HotkeyHelper.cs" />
+    <Compile Include="ModMaker\Utility\Reflection\ReflectionCache.cs" />
+    <Compile Include="ModMaker\Utility\Reflection\ReflectionFieldCache.cs" />
+    <Compile Include="ModMaker\Utility\Reflection\ReflectionMethodCache.cs" />
+    <Compile Include="ModMaker\Utility\Reflection\ReflectionPropertyCache.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="UI\AttackIndicatorManager.cs" />
+    <Compile Include="UI\DebugUI.cs" />
+    <Compile Include="UI\MovementIndicatorManager.cs" />
+    <Compile Include="UI\RangeIndicatorManager.cs" />
+    <Compile Include="Utility\MiscExtensions.cs" />
+    <Compile Include="Utility\SettingsWrapper.cs" />
+    <Compile Include="Utility\UnitEntityDataExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ModMaker\ModMaker.projitems" />
+    <None Include="ModMaker\ModMaker.shproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
