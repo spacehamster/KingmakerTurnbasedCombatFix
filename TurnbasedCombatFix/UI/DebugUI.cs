@@ -2,7 +2,6 @@
 using Kingmaker;
 using Kingmaker.GameModes;
 using Kingmaker.PubSubSystem;
-using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Commands;
 using ModMaker.Utility;
 using Pathfinding;

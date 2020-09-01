@@ -108,7 +108,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="Menus\HotkeyAndTimeOptions.cs" />
     <Compile Include="Menus\InterfaceOptions.cs" />
-    <Compile Include="Menus\RestrictionsOptions.cs" />
+    <Compile Include="Menus\GameplayOptions.cs" />
     <Compile Include="ModMaker\LocalizationManager.cs" />
     <Compile Include="ModMaker\MenuManager.cs" />
     <Compile Include="ModMaker\ModManager.cs" />
@@ -127,11 +127,21 @@
     <Compile Include="ModMaker\Utility\Reflection\ReflectionPropertyCache.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\Constants.cs" />
+    <Compile Include="Runtime\Drawer.cs" />
+    <Compile Include="Runtime\Drawers\CubeDrawer.cs" />
+    <Compile Include="Runtime\Drawers\LineDrawer.cs" />
+    <Compile Include="Runtime\Drawers\PolygonDrawer.cs" />
+    <Compile Include="Runtime\Drawers\SquareDrawer.cs" />
+    <Compile Include="Runtime\Element.cs" />
+    <Compile Include="Runtime\Gizmos.cs" />
+    <Compile Include="Runtime\GizmosInstance.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UI\AttackIndicatorManager.cs" />
     <Compile Include="UI\DebugUI.cs" />
     <Compile Include="UI\MovementIndicatorManager.cs" />
     <Compile Include="UI\RangeIndicatorManager.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Utility\MiscExtensions.cs" />
     <Compile Include="Utility\SettingsWrapper.cs" />
     <Compile Include="Utility\UnitEntityDataExtensions.cs" />
@@ -142,6 +152,18 @@
     </None>
     <None Include="ModMaker\ModMaker.projitems" />
     <None Include="ModMaker\ModMaker.shproj" />
+    <None Include="Runtime\Constants.cs.meta" />
+    <None Include="Runtime\Drawer.cs.meta" />
+    <None Include="Runtime\Drawers.meta" />
+    <None Include="Runtime\Drawers\CubeDrawer.cs.meta" />
+    <None Include="Runtime\Drawers\LineDrawer.cs.meta" />
+    <None Include="Runtime\Drawers\PolygonDrawer.cs.meta" />
+    <None Include="Runtime\Drawers\SquareDrawer.cs.meta" />
+    <None Include="Runtime\Element.cs.meta" />
+    <None Include="Runtime\Gizmos.cs.meta" />
+    <None Include="Runtime\GizmosInstance.cs.meta" />
+    <None Include="Runtime\Popcron.Gizmos.Runtime.asmdef" />
+    <None Include="Runtime\Popcron.Gizmos.Runtime.asmdef.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

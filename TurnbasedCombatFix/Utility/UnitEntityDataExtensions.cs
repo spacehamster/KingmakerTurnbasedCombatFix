@@ -1,6 +1,5 @@
 ﻿using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Items;
-using static TurnbasedCombatFix.Main;
 
 namespace TurnbasedCombatFix.Utility
 {

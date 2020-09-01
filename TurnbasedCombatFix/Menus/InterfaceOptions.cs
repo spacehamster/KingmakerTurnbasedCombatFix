@@ -2,9 +2,7 @@
 using ModMaker.Utility;
 using UnityEngine;
 using UnityModManagerNet;
-using static ModMaker.Utility.RichTextExtensions;
 using static TurnbasedCombatFix.Main;
-using static TurnbasedCombatFix.Utility.SettingsWrapper;
 
 namespace TurnbasedCombatFix.Menus
 {
@@ -30,8 +28,7 @@ namespace TurnbasedCombatFix.Menus
 
             using (new GUISubScope())
             {
-                DoNotMarkInvisibleUnit =
-                    GUIHelper.ToggleButton(DoNotMarkInvisibleUnit,
+                    GUIHelper.ToggleButton(ref Main.Settings.toggleDoNotMarkInvisibleUnit,
                     "Don't mark invisible Units", _buttonStyle, GUILayout.ExpandWidth(false));
             }
 
@@ -46,25 +43,20 @@ namespace TurnbasedCombatFix.Menus
         {
             using (new GUILayout.HorizontalScope())
             {
-                ShowAttackIndicatorOfCurrentUnit =
-                    GUIHelper.ToggleButton(ShowAttackIndicatorOfCurrentUnit,
+                GUIHelper.ToggleButton(ref Main.Settings.showAttackIndicatorOfCurrentUnit,
                     "Show Attack Indicator Of Current Unit", _buttonStyle, GUILayout.ExpandWidth(false));
 
-                ShowAttackIndicatorForPlayer =
-                    GUIHelper.ToggleButton(ShowAttackIndicatorForPlayer,
+                GUIHelper.ToggleButton(ref Main.Settings.toggleShowAttackIndicatorForPlayer,
                     "... For Player", _buttonStyle, GUILayout.ExpandWidth(false));
 
-                ShowAttackIndicatorForNonPlayer =
-                    GUIHelper.ToggleButton(ShowAttackIndicatorForNonPlayer,
+                GUIHelper.ToggleButton(ref Main.Settings.toggleShowAttackIndicatorForNonPlayer,
                     "... For Non-Player", _buttonStyle, GUILayout.ExpandWidth(false));
             }
 
-            ShowAttackIndicatorOnHoverUI =
-                GUIHelper.ToggleButton(ShowAttackIndicatorOnHoverUI,
+            GUIHelper.ToggleButton(ref Main.Settings.toggleShowAttackIndicatorOnHoverUI,
                 "Show Attack Indicator On Hover", _buttonStyle, GUILayout.ExpandWidth(false));
 
-            ShowAutoCastAbilityRange =
-                GUIHelper.ToggleButton(ShowAutoCastAbilityRange,
+            GUIHelper.ToggleButton(ref Main.Settings.toggleShowAutoCastAbilityRange,
                 "Show Ability Range Instead Of Attack Range When Using Auto-Cast", _buttonStyle, GUILayout.ExpandWidth(false));
 
         }
@@ -73,21 +65,17 @@ namespace TurnbasedCombatFix.Menus
         {
             using (new GUILayout.HorizontalScope())
             {
-                ShowMovementIndicatorOfCurrentUnit =
-                    GUIHelper.ToggleButton(ShowMovementIndicatorOfCurrentUnit,
+                GUIHelper.ToggleButton(ref Main.Settings.showMovementIndicatorOfCurrentUnit,
                     "Show Movement Indicator Of Current Unit", _buttonStyle, GUILayout.ExpandWidth(false));
 
-                ShowMovementIndicatorForPlayer =
-                    GUIHelper.ToggleButton(ShowMovementIndicatorForPlayer,
+                GUIHelper.ToggleButton(ref Main.Settings.showMovementIndicatorForPlayer,
                     "... For Player", _buttonStyle, GUILayout.ExpandWidth(false));
 
-                ShowMovementIndicatorForNonPlayer =
-                    GUIHelper.ToggleButton(ShowMovementIndicatorForNonPlayer,
+                GUIHelper.ToggleButton(ref Main.Settings.showMovementIndicatorForNonPlayer,
                     "... For Non-Player", _buttonStyle, GUILayout.ExpandWidth(false));
             }
 
-            ShowMovementIndicatorOnHoverUI =
-                GUIHelper.ToggleButton(ShowMovementIndicatorOnHoverUI,
+            GUIHelper.ToggleButton(ref Main.Settings.toggleShowMovementIndicatorOnHoverUI,
                 "Show Movement Indicator On Hover", _buttonStyle, GUILayout.ExpandWidth(false));
         }
     }

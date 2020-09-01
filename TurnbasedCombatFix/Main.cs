@@ -25,6 +25,7 @@ namespace TurnbasedCombatFix
             modEntry?.Logger?.Error(err);
         }
         public static bool enabled;
+        public static Settings Settings => Mod.Settings;
         public static UnityModManager.ModEntry modEntry;
         public static Harmony harmony;
         public static ModManager<Core, Settings> Mod;
@@ -32,6 +33,7 @@ namespace TurnbasedCombatFix
         static bool Load(UnityModManager.ModEntry modEntry)
         {
             try {
+                harmony = new Harmony(modEntry.Info.Id);
                 Main.modEntry = modEntry;
                 Mod = new ModManager<Core, Settings>();
                 Menu = new MenuManager();

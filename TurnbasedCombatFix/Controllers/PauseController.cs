@@ -1,17 +1,12 @@
 ﻿using HarmonyLib;
 using Kingmaker;
-using Kingmaker.Controllers;
 using Kingmaker.GameModes;
 using Kingmaker.PubSubSystem;
 using ModMaker;
 using ModMaker.Utility;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using TurnBased.Controllers;
 using static TurnbasedCombatFix.Utility.SettingsWrapper;
 
@@ -45,13 +40,9 @@ namespace TurnbasedCombatFix.Controllers
                 Game.Instance.IsPaused = !Game.Instance.IsPaused;
             }
         }
-        [HarmonyPatch(typeof(TbmPauseController), "Tick")]
-        public static class TbmPauseController_Tick_Patch
+        public static void TogglePatches()
         {
-            public static bool Prefix()
-            {
-                return false;
-            }
+            Util.TogglePatch(Main.harmony, typeof(Game_DoStartMode_Patch), Main.Settings.enablePausing);
         }
         [HarmonyPatch(typeof(Game), "DoStartMode")]
         public static class Game_DoStartMode_Patch

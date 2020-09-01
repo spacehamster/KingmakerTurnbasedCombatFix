@@ -1,14 +1,13 @@
 ﻿using ModMaker;
 using ModMaker.Utility;
+using TurnbasedCombatFix.Controllers;
 using UnityEngine;
 using UnityModManagerNet;
-using static ModMaker.Utility.RichTextExtensions;
 using static TurnbasedCombatFix.Main;
-using static TurnbasedCombatFix.Utility.SettingsWrapper;
 
 namespace TurnbasedCombatFix.Menus
 {
-    public class RestrictionsOptions : IMenuSelectablePage
+    public class GameplayOptions : IMenuSelectablePage
     {
         GUIStyle _buttonStyle;
         GUIStyle _labelStyle;
@@ -46,9 +45,15 @@ namespace TurnbasedCombatFix.Menus
 
         private void OnGUIAutomation()
         {
-            SkipPrepareForCombatPrompt =
-                GUIHelper.ToggleButton(SkipPrepareForCombatPrompt,
+            GUIHelper.ToggleButton(ref Main.Settings.skipPrepareForCombat,
                 "Skip Prepare For Combat Prompt", _buttonStyle, GUILayout.ExpandWidth(false));
+
+            GUIHelper.ToggleButton(ref Main.Settings.enablePausing,
+                "Enable Pause During Turn Based Combat", PauseController.TogglePatches, PauseController.TogglePatches, _buttonStyle, GUILayout.ExpandWidth(false));
+
+            GUIHelper.ToggleButton(ref Main.Settings.removeAnimationSpeedLimit,
+                "Remove Animation Speed Limit", TimeController_Tick_Patch.TogglePatch, TimeController_Tick_Patch.TogglePatch, _buttonStyle, GUILayout.ExpandWidth(false));
+
         }
     }
 }

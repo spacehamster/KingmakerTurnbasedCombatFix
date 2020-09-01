@@ -1,10 +1,8 @@
-﻿using Kingmaker;
-using Kingmaker.PubSubSystem;
+﻿using Kingmaker.PubSubSystem;
 using ModMaker;
 using ModMaker.Utility;
 using System.Reflection;
 using TurnbasedCombatFix.UI;
-using UnityEngine;
 using static TurnbasedCombatFix.Main;
 
 namespace TurnbasedCombatFix.Controllers

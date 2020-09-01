@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityModManagerNet;
 using static ModMaker.Utility.RichTextExtensions;
 using static TurnbasedCombatFix.Main;
-using static TurnbasedCombatFix.Utility.SettingsWrapper;
 
 namespace TurnbasedCombatFix.Menus
 {
